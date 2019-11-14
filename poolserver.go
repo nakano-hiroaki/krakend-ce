@@ -76,7 +76,7 @@ func InitHTTPDefaultTransport(cfg config.ServiceConfig) {
 func RunServer(ctx context.Context, cfg config.ServiceConfig, handler http.Handler) error {
 	done := make(chan error)
 
-	v := serverPool.Get().NewServer(cfg,handler)
+	v := serverPool.Get().(*http.Server)
 	s.Handler = handler
 
 	if s.TLSConfig == nil {
